@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+      <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+      <style>
+         body {
+         font-family: 'Ubuntu Mono', monospace;
+         }
+         @keyframes blink {
+         0%,
+         100% {
+         opacity: 1;
+         }
+         50% {
+         opacity: 0;
+         }
+         }
+         .blinking-cursor {
+         animation: blink 1s step-start 0s infinite;
+         }
+         .slide-over {
+         opacity: 0;
+         transform: translateX(100%);
+         transition: opacity 0.5s, transform 0.5s;
+         position: fixed;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         width: 100%;
+         max-width: 400px;
+         background: white;
+         z-index: 50;
+         overflow: scroll;
+         }
+         #overlay {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
+         z-index: 49; /* Set the z-index to be just below the slide-over panel */
+         }
+         .slide-over-open {
+         opacity: 1;
+         transform: translateX(0);
+         }
+         #privacy, #contact{
+         cursor: pointer;
+         }
+      </style>
+      <title>Esstec.ae</title>
+   </head>
+   <body class="bg-slate-900 text-slate-400 pb-10">
+      <div id="overlay"></div>
+      <div class="px-4 sm:px-6 lg:px-8">
+         <div class="mt-8 flow-root">
+            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+               <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                  <table class="table-auto min-w-full">
+                     <thead>
+                        <tr>
+                           <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-0 w-2"></th>
+                           <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold"></th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">1</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300">&lt;<span
+                              class="text-amber-400 font-medium">html</span> <span class="text-cyan-300">lang</span>="en"&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">2</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-orange-400">&lt;head&gt;<span
+                              class="text-lime-400">&lt;title&gt;</span><span class="text-slate-300">Esstec.ae</span><span
+                              class="text-lime-400">&lt;/title&gt;</span>&lt;/head&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">3</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300">&lt;<span class="text-orange-600">link</span> <span class="text-amber-500">href</span>=<span class="text-green-700">"https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"</span> <span class="text-amber-500">rel</span>=<span class="text-green-700">"stylesheet"</span>&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">4</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"><span class="text-pink-600">import</span> { humanity } <span class="text-cyan-300">from</span> 'humanity';</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">5</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"><span class="text-pink-600">import</span> { Link } <span class="text-cyan-300">from</span> '../components';
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">6</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"><span class="text-pink-600">import</span> { httpStatus } <span class="text-cyan-300">from</span> 'http-status';
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">7</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300">&lt;span&gt;<span
+                              class="text-slate-300">Planet Earth(TM)-U. <span id="time-cell"></span> - </span>&lt;&sol;span&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">8</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300">&lt;span&gt;<span
+                              class="text-slate-300">3.455307 by esd-<span id="year-cell"></span>AD. Copyright ESSTEC FZ
+                              LLC.</span>&lt;&sol;span&gt;
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">9</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">10</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-pink-600">&lt;p&gt;<span class="text-slate-300">A
+                              lot many problem have been detected on Earth and we can do nothing much to shut it down and prevent
+                              any</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">11</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300">damage to your system. We can abslutely
+                              sure, that one or more of the following programs may have had
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">12</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300">something to do with it. But do have a
+                              read in case you missed out.<span class="text-pink-600">&lt;&sol;p&gt;</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">13</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">14</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-green-500 font-medium">if (humanity === true)
+                              {
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">15</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\crypto\FTX.EXE</a></span>&lt;&sol;Link&gt;
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">16</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\war\GAZA_CONFLICT.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">17</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\television\DUBAI_BLING_2.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">18</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\climate\COP_28.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">19</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\film\WONKA.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">20</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\design\KADHI_CHAWAL.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">21</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">C:\Users\Earth1\systemic_failures\automobiles\TESLA_RECALL.EXE</a></span>&lt;&sol;Link&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">22</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">23</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-green-500 font-medium">} elseif (humanity.atItsPeak) {</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">24</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"><span
+                              class="text-slate-300"><span class="text-orange-800">@returns</span> {<span class="text-orange-300">Promise&lt;Resolve&gt;</span>}</span></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">25</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">26</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">X:\Users\Earth42\proven_solution\essential_tech\DESIGN_SERVICES.EXE</a></span>&lt;&sol;Link&gt;
+                           </td>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">27</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">Y:\Users\Earth42\proven_solution\essential_tech\PROJECT_MANAGEMENT.EXE</a></span>&lt;&sol;Link&gt;
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">28</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-red-600 pl-12">&lt;Link&gt;<span
+                              class="text-slate-300"><a
+                              href="#">Z:\Users\Earth42\proven_solution\essential_tech\TECHNICAL_CONSULTANCY.EXE</a></span>&lt;&sol;Link&gt;
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">29</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-green-500 font-medium">}</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">30</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">31</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-pink-600">&lt;p&gt;<span class="text-slate-300">We
+                              recommend sharing your system status with us via the contact prompt.</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">32</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300">Check if necessary hardware and/or
+                              software updates have been installed correctly. If not, consider critical
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">33</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-slate-300">upgrades urgently <span
+                              class="text-red-600 font-medium">&lt;Link&gt;</span><span class="text-slate-300"><a
+                              href="mailto:info@esstec.ae">info@esstec.ae</a></span><span class="text-red-600 font-medium">&lt;&sol;Link&gt;</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">34</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-pink-600">&lt;&sol;p&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">35</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300 font-medium"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">36</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300 font-medium">res.<span class="text-cyan-700">status</span>(httpStatus.<span class="text-orange-600">CREATED</span>).<span class="text-cyan-700">send</span>(You may choose to contact other agents in the region but you are on your own)</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">37</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">38</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300">&lt;span&gt;<span
+                              class="text-slate-300">{ humanity.exists && &lt;MakeGoodChoices /&gt; }</span>&lt;/span&gt;</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">39</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"></td>
+                           <td rowspan="4">
+                              <img src="./assets/logo/Asset 8a.png" width="120px" class="ml-14" alt="">
+                              <p style="color: #EEB843; padding-top: 5px; letter-spacing: 3px;"><span id="privacy">privacy</span> \\ <span id="contact">contact</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">40</td>
+                           <!-- <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300">&lt;span&gt;<span
+                              class="text-slate-300"> to reboot_</span>&lt;/span&gt;</td> -->
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-pink-600 font-medium">return (<span class="text-amber-300">Press any key</span>);</td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">41</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-amber-300"></td>
+                        </tr>
+                        <tr>
+                           <td class="whitespace-nowrap py-0.5 pl-4 pr-3 text-sm sm:pl-0 text-right">42</td>
+                           <td class="whitespace-nowrap px-3 py-0.5 text-sm text-whtie">&lt;Y/N&gt;<span
+                              class="blinking-cursor">|</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="slide-over">
+         <!-- Close button at the top -->
+         <div class="ml-auto mt-2 mr-2 flex h-8 w-8 items-center close-panel-container">
+            <button type="button"
+               class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 close-panel-button">
+               <span class="absolute-inset-2.5"></span>
+               <span class="sr-only close-button">Close panel</span>
+               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+               </svg>
+            </button>
+         </div>
+         <!-- Content for the contact panel -->
+         <div class="content contact-content pl-10 pr-10">
+            <h1 style="font-size: 35px; color: black;" class="ml-3.5">Contact Us</h1>
+            <div id="contact-information" class="mt-8 ml-3.5">
+               <div class="details">
+                  <h4 style="font-size: 25px; color: black;">Locations</h4>
+                  <p>183, Avenue Prince Heritier, Tanger, Morocco</p>
+               </div>
+               <div class="details mt-8">
+                  <h4 style="font-size: 25px; color: black;">Phone</h4>
+                  <p><a href="tel:+212 539 34 39">+212 539 34 39</a></p>
+               </div>
+               <div class="details mt-8">
+                  <h4 style="font-size: 25px; color: black;">EMAIL</h4>
+                  <p><a href="mailto:info@esstec.ae">info@esstec.ae</a></p>
+               </div>
+            </div>
+         </div>
+         <!-- Content for the privacy panel -->
+         <div class="content privacy-content pl-10 pr-10">
+            <h1 style="font-size: 35px; color: black;" class="ml-3.5">Privacy Policy</h1>
+            <div id="privacy-content" class="mt-8 ">
+               <div class="details">
+                  <p>
+                     We respect your privacy and are committed to protecting it through our compliance with this
+                     privacy policy (“Policy”). This Policy describes the types of information we may collect from
+                     you or that you may provide (“Personal Information”) on the www.esstec.ae website (“Website”
+                     or “Service”) and any of its related products and services (collectively, “Services”), and our
+                     practices for collecting, using, maintaining, protecting, and disclosing that Personal
+                     Information. It also describes the choices available to you regarding our use of your Personal
+                     Information and how you can access and update it.
+                     This Policy is a legally binding agreement between you (“User”, “you” or “your”) and Esstec
+                     (“Esstec”, “we”, “us” or “our”). If you are entering into this agreement on behalf of a
+                     business or other legal entity, you represent that you have the authority to bind such entity
+                     to this agreement, in which case the terms “User”, “you” or “your” shall refer to such entity.
+                     If you do not have such authority, or if you do not agree with the terms of this agreement, you
+                     must not accept this agreement and may not access and use the Website and Services. By accessing
+                     and using the Website and Services, you acknowledge that you have read, understood, and agree to
+                     be bound by the terms of this Policy.
+                     This Policy does not apply to the practices of companies that we do not own or control, or to
+                     individuals that we do not employ or manage.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>
+         // Function to update the time
+         function updateCurrentTime() {
+           // Using moment.js to get the current time formatted with 'LTS' which includes seconds
+           var currentTime = moment().format('LTS');
+           // Updating the HTML content of the element with the ID 'time-cell'
+           document.getElementById('time-cell').textContent = currentTime;
+         }
+         
+         function getCurrentYear() {
+           var currentYear = moment().format('YYYY');
+           document.getElementById('year-cell').textContent = currentYear;
+         }
+         
+         // Update the time every second
+         setInterval(updateCurrentTime, 1000);
+         
+         // Initialize the time display
+         updateCurrentTime();
+         getCurrentYear();
+         
+         document.addEventListener('DOMContentLoaded', function () {
+         const contactButton = document.getElementById('contact');
+         const privacyButton = document.getElementById('privacy');
+         const closeButton = document.querySelector('.close-panel-button');
+         const slideOver = document.querySelector('.slide-over');
+         const contactContent = document.querySelector('.contact-content');
+         const privacyContent = document.querySelector('.privacy-content');
+         
+         function openSlideOver(contentElement) {
+         // Hide all content elements initially
+         contactContent.style.display = 'none';
+         privacyContent.style.display = 'none';
+         document.getElementById('overlay').style.display = 'block'; 
+         
+         // Show the specific content element
+         contentElement.style.display = 'block';
+         
+         // Open the slide-over panel
+         slideOver.classList.add('slide-over-open');
+         }
+         
+         function closeSlideOver() {
+         // Close the slide-over panel
+         slideOver.classList.remove('slide-over-open');
+         
+         document.getElementById('overlay').style.display = 'none';
+         }
+         
+         contactButton.addEventListener('click', function (event) {
+         event.stopPropagation();
+         openSlideOver(contactContent);
+         });
+         
+         privacyButton.addEventListener('click', function (event) {
+         event.stopPropagation();
+         openSlideOver(privacyContent);
+         });
+         
+         closeButton.addEventListener('click', function (event) {
+         event.stopPropagation();
+         closeSlideOver();
+         });
+         
+         document.addEventListener('click', function (event) {
+         if (!slideOver.contains(event.target) && slideOver.classList.contains('slide-over-open')) {
+           closeSlideOver();
+         }
+         });
+         }); 
+      </script>
+   </body>
+</html>
