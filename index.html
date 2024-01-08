@@ -321,7 +321,7 @@
                   </div>
                   <div class="block lg:hidden ml-24 mt-2">
                      <img src="./assets/logo/Asset 8a.png" width="120px" class="ml-6" alt="">
-                              <p style="color: #EEB843; padding-top: 5px; letter-spacing: 3px; font-size: 14px;"><span class="privacy">privacy</span> \\ <span class="contact">contact</span></p>
+                              <p style="color: #EEB843; padding-top: 5px; letter-spacing: 3px; font-size: 14px;"><span id="privacy-mb">privacy</span> \\ <span id="contact-mb">contact</span></p>
                   </div>
                </div>
             </div>
@@ -410,6 +410,8 @@
          document.addEventListener('DOMContentLoaded', function () {
          const contactButton = document.getElementById('contact');
          const privacyButton = document.getElementById('privacy');
+         const privacyButtonMobile = document.getElementById('privacy-mb');
+         const contactButtonMobile = document.getElementById('contact-mb');
          const closeButton = document.querySelector('.close-panel-button');
          const slideOver = document.querySelector('.slide-over');
          const contactContent = document.querySelector('.contact-content');
@@ -439,8 +441,18 @@
          event.stopPropagation();
          openSlideOver(contactContent);
          });
+
+         contactButtonMobile.addEventListener('click', function (event) {
+         event.stopPropagation();
+         openSlideOver(contactContent);
+         });
          
          privacyButton.addEventListener('click', function (event) {
+         event.stopPropagation();
+         openSlideOver(privacyContent);
+         });
+
+         privacyButtonMobile.addEventListener('click', function (event) {
          event.stopPropagation();
          openSlideOver(privacyContent);
          });
