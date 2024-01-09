@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Accordion functionality Script  Start-->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const accordionButtons = document.querySelectorAll(
@@ -24,8 +25,6 @@
 
             if (targetElement) {
               const isHidden = targetElement.classList.contains("hidden");
-
-              // Close all accordion items
               accordionButtons.forEach((b) => {
                 const otherTargetId = b.getAttribute("data-accordion-target");
                 const otherTargetElement =
@@ -38,14 +37,13 @@
                   otherTargetElement.classList.add("hidden");
                 }
               });
-
-              // Toggle the target item
               targetElement.classList.toggle("hidden", !isHidden);
             }
           });
         });
       });
     </script>
+    <!-- Accordion functionality Script  End-->
     <style>
       body {
         font-family: "Ubuntu Mono", monospace;
@@ -840,7 +838,7 @@
               employ or manage.
             </p>
           </div>
-          <div class="details mt-8">
+          <div class="details mt-8 mb-8">
             <!-- accordion Start -->
             <div
               id="accordion-color"
