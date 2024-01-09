@@ -1,0 +1,64 @@
+body {
+    font-family: "Ubuntu Mono", monospace;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .blinking-cursor {
+    animation: blink 1s step-start 0s infinite;
+  }
+  .slide-over {
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      opacity 0.5s,
+      transform 0.5s;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    z-index: 50;
+    overflow-y: scroll;
+  }
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
+    z-index: 49; /* Set the z-index to be just below the slide-over panel */
+  }
+  .slide-over-open {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  #privacy,
+  #contact {
+    cursor: pointer;
+  }
+  p {
+    font-size: 14px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  table {
+    width: 100%;
+  }
+  thead th,
+  tbody td {
+    white-space: nowrap;
+  }
